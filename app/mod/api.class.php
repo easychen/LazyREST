@@ -119,7 +119,7 @@ class apiMod extends appMod
 					$lid = last_id();
 					if( $lid < 1 ) $this->send_error( LR_API_DB_ERROR , 'DATABASE ERROR ' . mysql_error() );
 					
-					if( !$data = get_data( "SELECT " . rjoin( ' , ' , '`' , $outputs ). " FROM `" . s( $table ) . "` WHERE `id` = '" . intval( $lid ) . "'" ))
+					if( !$data = get_data( "SELECT " . rjoin( ' , ' , '`' , $outputs ). " FROM `" . s( $table ) . "` WHERE `id` = '" . intval( $lid ) . "'" , db() ))
 						$this->send_error( LR_API_DB_ERROR , 'DATABASE ERROR ' . mysql_error() );
 					else
 					{

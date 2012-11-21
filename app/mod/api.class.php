@@ -383,6 +383,7 @@ class apiMod extends appMod
 		$obj['err_code'] = intval( $number );
 		$obj['err_msg'] = $msg;
 		
+		header('Content-type: application/json');
 		die( json_encode( $obj ) );
 	}
 	
@@ -392,7 +393,8 @@ class apiMod extends appMod
 		$obj['err_code'] = '0';
 		$obj['err_msg'] = 'success';
 		$obj['data'] = $data;
-		
+
+		header('Content-type: application/json');
 		die( json_encode( $obj ) );
 	}
 

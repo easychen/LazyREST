@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^api/(.+)/(.+)/(.*)$ /index.php?c=api&_table=$1&_interface=$2&$3 [L]

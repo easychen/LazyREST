@@ -1,0 +1,24 @@
+<form action="?a=action_save" method="post" id="action_form">
+<div class="bigtitle">修改自定义接口<?=$my_action['action']?></div>
+<p>接口名称</p>
+<p><input type="text" name="action" placeholder="接口名称" value="<?=$my_action['action']?>"/></p>
+<p>接口代码 </p>
+<textarea class="action_code" name="code" id="thecode">
+<?=htmlspecialchars($my_action['code'])?>
+</textarea>
+
+<input name="table" value="<?=$table?>" type="hidden" />
+<p style="margin-top:10px"><input type="button" value="保存" onclick="$('#thecode').val(myCodeMirror.getValue());send_form_in('action_form');" class="btn"/>
+</p>
+
+<p class="dark">获取请求参数 - v('字段名') | 更新数据库 - run_sql( $sql )</p>
+<p class="dark">添加认证 - $this->check_token();</p>
+<p class="dark">返回数据 - return $this->send_result( $data );</p>
+<p class="dark">返回错误 - return $this->send_error( $err_code , $err_msg );</p>
+
+</div>
+</form>
+<script>
+var myCodeMirror = CodeMirror.fromTextArea(document.getElementById('thecode') , { theme:'night' });
+myCodeMirror.setValue(document.getElementById('thecode').value);
+</script>

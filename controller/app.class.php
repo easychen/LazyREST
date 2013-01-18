@@ -8,6 +8,7 @@ class appController extends coreController
 	{
 		// 载入默认的
 		parent::__construct();
+		session_start();
 	}
 
 	// login check or something

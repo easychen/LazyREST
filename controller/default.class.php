@@ -10,7 +10,11 @@ class defaultController extends appController
 		parent::__construct();
 		if( g('a') != 'login' && g('a') != 'login_check' && g('a') != 'install')
 		{
-			if( !is_login() ) return info_page('<a href="?a=login">请先登入</a>');
+			if( !is_login() )
+			{
+				info_page('<a href="?a=login">请先登入</a>');
+				exit;
+			}
 		} 
 	}
 	

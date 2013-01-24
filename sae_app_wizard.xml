@@ -1,0 +1,39 @@
+<appwizard>
+  <introduction> 
+		<name>LazyRest</name>
+		<author>easychen@gmail.com</author>
+		<icon>http://domain/icon.jpg</icon>
+		<homepage>http://ftqq.com/lazyrest/</homepage>
+		<category>独立网站</category>		
+		<description>
+		<![CDATA[
+		LazyRest是一个可以通过Web界面快速配置的Rest Server.
+		]]>
+		</description>
+	</introduction>
+	<platform> 
+		<services> 
+			<!-- 如果有tplvar这个属性,则代码中出现的<<dom_name>>这样的标签将被替换
+				如果是推荐应用,则不管有没有tplvar,都使用默认值且不进行代码替换.
+			-->
+			<service>Mysql</service>
+			<service>KVDB</service> 
+		</services>
+		<appconfig> 
+			<tpl>
+				<![CDATA[
+name: <<appname>>
+version: <<version>>
+handle:
+	- rewrite: if (path ~ "/api/(.+)/(.+)/(.*)") goto "/index.php?m=api&_table=$1&_interface=$2&$3"
+				]]>
+			</tpl>
+			<!-- form这段可省,只有当config中有需要动态配置的内容时,才写此段 -->
+		</appconfig>
+	</platform>
+
+	<code> 
+	
+	<initScript>index.php?a=install</initScript>
+	</code>
+</appwizard>

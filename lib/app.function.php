@@ -54,7 +54,7 @@ function kget( $key )
 	if( has_saekv() )
 	{
 		$kv = new SaeKV();$kv->init();
-		$kv->get( $key );
+		return $kv->get( $key );
 	}
 	else
 	{
@@ -68,7 +68,7 @@ function kset( $key , $value )
 	if( has_saekv() )
 	{
 		$kv = new SaeKV();$kv->init();
-		$kv->set( $key , $value );
+		return $kv->set( $key , $value );
 	}
 	else
 	{

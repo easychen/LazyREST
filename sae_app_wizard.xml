@@ -25,7 +25,7 @@
 name: <<appname>>
 version: <<version>>
 handle:
-	- rewrite: if (path ~ "/api/(.+)/(.+)/(.*)") goto "/index.php?m=api&_table=$1&_interface=$2&$3"
+	- rewrite: if (path ~ "/api/(.+)/(.+)/(.*)") goto "/index.php?c=api&_table=$1&_interface=$2&$3"
 				]]>
 			</tpl>
 			<!-- form这段可省,只有当config中有需要动态配置的内容时,才写此段 -->

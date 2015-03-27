@@ -57,21 +57,31 @@ class exportController extends appController
 		
 		ob_start();
 		@extract( $data );
+		error_reporting(0); // 关闭错误报告，以免把warning输出到页面
 		require( AROOT . 'meta/api.sample.php' );
 		$code = ob_get_contents();
 		ob_end_clean();
 		$code = "<?php \r\n". $code . '?>';
 		
-		include AROOT . 'function/phpbeautifier/PhpBeautifier.inc';
+		include AROOT . 'lib/phpbeautifier/PhpBeautifier.inc';
 	
 		$beautify = new PhpBeautifier();
 		$beautify -> tokenSpace = true;//put space between tokens
 		$beautify -> blockLine = true;//put empty lines between blocks of code (if, while etc)
 		$beautify -> optimize = false;//optimize strings (for now), if a double quoted string does not contain variables of special carachters transform it to a single quoted string to save parsing time
 		if( v('read') == 1 )
+		{
+			header("Content-Type: text/html; charset=UTF-8");
 			highlight_string( $beautify -> process( $code ) );
+		}
 		else
-			echo $beautify -> process( $code );
+		{
+			// 强制下载
+			header("Content-Type: application/force-download");
+			// header("Content-Disposition: attachment; filename=".basename($filename));
+			echo $beautify -> process( $code );			
+		}
+
 		//echo $code;
 		
 		/*

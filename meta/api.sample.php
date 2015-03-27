@@ -10,7 +10,7 @@ define( 'LR_API_ARGS_ERROR' , 10006 );
 define( 'LR_API_DB_EMPTY_RESULT' , 10007 );
 
 
-class apiMod extends appMod
+class apiController extends appController
 {
 	function __construct()
 	{

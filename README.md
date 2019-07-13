@@ -1,3 +1,5 @@
+⚠️ 此版本已经过期，请使用 https://github.com/easychen/Lazyrest4/
+
 LazyREST 是一个直接使用Web接口进行配置的REST Server。目前它主要在SAE上使用。
 
 # LazyREST的特性
